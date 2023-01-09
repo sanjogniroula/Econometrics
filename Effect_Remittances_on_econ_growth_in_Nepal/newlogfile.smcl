@@ -1,0 +1,87 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/sanjogniroula/Downloads/P_Data_Extract_From_World_Development_Indicators-2/newlogfile.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}19 Dec 2022, 08:09:41
+
+{com}. do "/Users/sanjogniroula/Downloads/P_Data_Extract_From_World_Development_Indicators-2/dofile.do"
+{txt}
+{com}. ************Created by Sanjog Niroula*****************
+. 
+. 
+. *importing data downloaded from world bank**
+. 
+. 
+. import delimited "/Users/sanjogniroula/Downloads/P_Data_Extract_From_World_Development_Indicators-2/c7467847-8f9a-4933-862d-564f82258d02_Data.csv" 
+{res}{txt}(encoding automatically selected: ISO-8859-1)
+{text}(7 vars, 530 obs)
+
+{com}. drop if countrycode==""
+{txt}(5 observations deleted)
+
+{com}. drop timecode seriesname countrycode seriescode
+{txt}
+{com}. rename value gfcf
+{res}{txt}
+{com}. rename countryname country
+{res}{txt}
+{com}. egen countryno=group(country)
+{txt}
+{com}. tsset countryno time
+{res}
+{col 1}{txt:Panel variable: }{res:countryno}{txt: (strongly balanced)}
+{p 1 16 2}{txt:Time variable: }{res:time}{txt:, }{res:{bind:1980}}{txt: to }{res:{bind:2004}}{p_end}
+{txt}{col 10}Delta: {res}1 unit
+{txt}
+{com}. 
+. synth_runner gfcf gfcf(1990) gfcf(1989) gfcf(1988) gfcf(1987) gfcf(1986) gfcf(1985) gfcf(1984) gfcf(1983) gfcf(1982) gfcf(1981) gfcf(1980),trunit(12) trperiod(1991) gen_vars
+{res}Estimating the treatment effects
+Estimating the possible placebo effects (one set for each of the 1 treatment periods)
+|{col 20}| Total: 20
+...................| 4.00s elapsed. 
+
+Conducting inference: 5 steps, and 20 placebo averages
+Step 1... Finished
+Step 2... Finished
+Step 3... Finished
+Step 4... Finished
+Step 5... Finished
+
+Post-treatment results: Effects, p-values, standardized p-values
+
+{txt}{space 0}{space 0}{ralign 12:}{space 1}{c |}{space 1}{ralign 9:estimates}{space 1}{space 1}{ralign 9:pvals}{space 1}{space 1}{ralign 9:pvals_std}{space 1}
+{space 0}{hline 13}{c   +}{hline 11}{hline 11}{hline 11}
+{space 0}{space 0}{ralign 12:c1}{space 1}{c |}{space 1}{ralign 9:{res:{sf:-.0604549}}}{space 1}{space 1}{ralign 9:{res:{sf:      .95}}}{space 1}{space 1}{ralign 9:{res:{sf:      .85}}}{space 1}
+{space 0}{space 0}{ralign 12:c2}{space 1}{c |}{space 1}{ralign 9:{res:{sf: 1.037184}}}{space 1}{space 1}{ralign 9:{res:{sf:       .9}}}{space 1}{space 1}{ralign 9:{res:{sf:       .5}}}{space 1}
+{space 0}{space 0}{ralign 12:c3}{space 1}{c |}{space 1}{ralign 9:{res:{sf: 2.931056}}}{space 1}{space 1}{ralign 9:{res:{sf:      .65}}}{space 1}{space 1}{ralign 9:{res:{sf:       .3}}}{space 1}
+{space 0}{space 0}{ralign 12:c4}{space 1}{c |}{space 1}{ralign 9:{res:{sf: .2289873}}}{space 1}{space 1}{ralign 9:{res:{sf:      .85}}}{space 1}{space 1}{ralign 9:{res:{sf:       .9}}}{space 1}
+{space 0}{space 0}{ralign 12:c5}{space 1}{c |}{space 1}{ralign 9:{res:{sf: 2.939227}}}{space 1}{space 1}{ralign 9:{res:{sf:       .8}}}{space 1}{space 1}{ralign 9:{res:{sf:       .3}}}{space 1}
+{space 0}{space 0}{ralign 12:c6}{space 1}{c |}{space 1}{ralign 9:{res:{sf: 3.502946}}}{space 1}{space 1}{ralign 9:{res:{sf:      .75}}}{space 1}{space 1}{ralign 9:{res:{sf:      .15}}}{space 1}
+{space 0}{space 0}{ralign 12:c7}{space 1}{c |}{space 1}{ralign 9:{res:{sf: 1.721846}}}{space 1}{space 1}{ralign 9:{res:{sf:      .85}}}{space 1}{space 1}{ralign 9:{res:{sf:       .5}}}{space 1}
+{space 0}{space 0}{ralign 12:c8}{space 1}{c |}{space 1}{ralign 9:{res:{sf: .8620274}}}{space 1}{space 1}{ralign 9:{res:{sf:       .8}}}{space 1}{space 1}{ralign 9:{res:{sf:      .75}}}{space 1}
+{space 0}{space 0}{ralign 12:c9}{space 1}{c |}{space 1}{ralign 9:{res:{sf: .9836369}}}{space 1}{space 1}{ralign 9:{res:{sf:       .9}}}{space 1}{space 1}{ralign 9:{res:{sf:      .75}}}{space 1}
+{space 0}{space 0}{ralign 12:c10}{space 1}{c |}{space 1}{ralign 9:{res:{sf: 2.060872}}}{space 1}{space 1}{ralign 9:{res:{sf:      .75}}}{space 1}{space 1}{ralign 9:{res:{sf:       .5}}}{space 1}
+{space 0}{space 0}{ralign 12:c11}{space 1}{c |}{space 1}{ralign 9:{res:{sf: 2.787038}}}{space 1}{space 1}{ralign 9:{res:{sf:       .7}}}{space 1}{space 1}{ralign 9:{res:{sf:      .35}}}{space 1}
+{space 0}{space 0}{ralign 12:c12}{space 1}{c |}{space 1}{ralign 9:{res:{sf: 2.726746}}}{space 1}{space 1}{ralign 9:{res:{sf:      .65}}}{space 1}{space 1}{ralign 9:{res:{sf:      .45}}}{space 1}
+{space 0}{space 0}{ralign 12:c13}{space 1}{c |}{space 1}{ralign 9:{res:{sf: 3.238355}}}{space 1}{space 1}{ralign 9:{res:{sf:       .6}}}{space 1}{space 1}{ralign 9:{res:{sf:       .2}}}{space 1}
+{space 0}{space 0}{ralign 12:c14}{space 1}{c |}{space 1}{ralign 9:{res:{sf: 2.785743}}}{space 1}{space 1}{ralign 9:{res:{sf:       .7}}}{space 1}{space 1}{ralign 9:{res:{sf:      .35}}}{space 1}
+{res}{txt}
+{com}. 
+. single_treatment_graphs, trlinediff(1) raw_gname(cigsale1_raw) effects_gname(cigsale1_effects) effects_ylabels(-30(10)30) effects_ymax(35) effects_ymin(-35)
+{res}{txt}(0 real changes made)
+(0 real changes made)
+{res}{txt}
+{com}. 
+. effect_graphs , trlinediff(1) effect_gname(cigsale1_effect) tc_gname(cigsale1_tc)
+{res}{txt}
+{com}.         
+. pval_graphs , pvals_gname(cigsale1_pval) pvals_std_gname(cigsale1_pval_t)
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. graph save "cigsale1_effect" "/Users/sanjogniroula/Downloads/P_Data_Extract_From_World_Development_Indicators-2/stata2.gph"
+{res}{txt}file {bf:/Users/sanjogniroula/Downloads/P_Data_Extract_From_World_Development_Indicators-2/stata2.gph} saved
+
+{com}. 
